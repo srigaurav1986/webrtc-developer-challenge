@@ -1,0 +1,45 @@
+<html>
+<head>
+    <title>Sample webrtc video and audio chat</title>
+    <link rel="stylesheet" type="text/css" href="styles/home/main.css">
+    <script type="text/javascript" src="./scripts/jquery.js"></script>
+</head>
+<body>
+    <div class="main-container">
+        <div class="center-middle">
+            <div class="helvetica heading-1">
+                A Simple Room Based Webrtc Application
+            </div>
+			<button id="somelink" "type ="button" value="link" class="helvetica">Click</button>
+			<a id="link"></a>
+            <!--div class="helvetica">
+                <input type="text" placeholder="Enter your room name, Press Enter and share!" class="room-name"/>
+            </div-->
+        </div>
+       
+    </div>
+    <script type="text/javascript">
+        $( document).ready(function() {
+					function createlink () {
+					var uniquelink=location.href+Math.floor(100000 + Math.random() * 900000);
+					document.getElementById("link").innerHTML = uniquelink;
+					document.getElementById("link").href = uniquelink;
+					}
+					document.getElementById("somelink").onclick= createlink;
+					//Add the link somewhere, an appendChild statement will do.
+					//Then run this
+					
+            $('.room-name').keyup(function(e){
+			
+                if(e.keyCode == 13)
+                {
+                    var room = $(this).val().trim();
+                    if( room != '' ) {
+                        location.href = "/"+room;
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
